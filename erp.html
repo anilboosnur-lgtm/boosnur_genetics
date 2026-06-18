@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boosnur ERP | Sales Billing</title>
+  <link rel="stylesheet" href="erp.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="erp-brand" href="#dashboard" aria-label="Boosnur ERP dashboard">
+        <span class="brand-seal">BG</span>
+        <span><strong>Boosnur ERP</strong><small>Sales, billing and stock</small></span>
+      </a>
+      <nav class="side-nav" aria-label="ERP sections">
+        <button class="nav-item active" data-view="dashboard" type="button"><span>Dashboard</span></button>
+        <button class="nav-item" data-view="billing" type="button"><span>Sales Billing</span></button>
+        <button class="nav-item" data-view="invoices" type="button"><span>Invoices</span></button>
+        <button class="nav-item" data-view="products" type="button"><span>Products & Stock</span></button>
+        <button class="nav-item" data-view="customers" type="button"><span>Customers</span></button>
+        <button class="nav-item" data-view="ledger" type="button"><span>Ledger</span></button>
+        <button class="nav-item" data-view="reports" type="button"><span>Reports</span></button>
+        <button class="nav-item" data-view="settings" type="button"><span>Backup</span></button>
+      </nav>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Local office system</p>
+          <h1 id="view-title">Dashboard</h1>
+        </div>
+        <div class="top-actions">
+          <button class="ghost-button" id="seed-demo" type="button">Load Sample Data</button>
+          <button class="primary-button" data-open-billing type="button">New Invoice</button>
+        </div>
+      </header>
+
+      <section class="view active" id="dashboard">
+        <div class="metric-grid">
+          <article class="metric"><span>Total sales</span><strong id="metric-sales">Rs 0.00</strong><small>This financial record</small></article>
+          <article class="metric"><span>Outstanding</span><strong id="metric-due">Rs 0.00</strong><small>Payment yet to receive</small></article>
+          <article class="metric"><span>Stock value</span><strong id="metric-stock">Rs 0.00</strong><small>Current inventory value</small></article>
+          <article class="metric"><span>Low stock</span><strong id="metric-low">0</strong><small>Items below reorder level</small></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Recent Invoices</h2>
+              <button class="text-button" data-switch-view="invoices" type="button">View all</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Invoice</th><th>Customer</th><th>Date</th><th class="num">Amount</th><th>Status</th></tr></thead>
+                <tbody id="recent-invoices"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2>Stock Alerts</h2>
+              <button class="text-button" data-switch-view="products" type="button">Manage</button>
+            </div>
+            <div id="stock-alerts" class="alert-list"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="billing">
+        <form class="invoice-layout" id="invoice-form">
+          <section class="panel invoice-main">
+            <div class="panel-head">
+              <h2>Sales Invoice</h2>
+              <span class="invoice-no" id="invoice-number">INV-0001</span>
+            </div>
+
+            <div class="form-grid">
+              <label>
+                <span>Customer</span>
+                <select id="invoice-customer" required></select>
+              </label>
+              <label>
+                <span>Invoice date</span>
+                <input id="invoice-date" type="date" required>
+              </label>
+              <label>
+                <span>GST / Tax %</span>
+                <input id="invoice-tax" type="number" min="0" step="0.01" value="0">
+              </label>
+              <label>
+                <span>Payment status</span>
+                <select id="invoice-status">
+                  <option value="Paid">Paid</option>
+                  <option value="Part Paid">Part Paid</option>
+                  <option value="Unpaid">Unpaid</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="line-entry">
+              <select id="line-product"></select>
+              <input id="line-qty" type="number" min="0.01" step="0.01" placeholder="Qty">
+              <input id="line-rate" type="number" min="0" step="0.01" placeholder="Rate">
+              <button class="secondary-button" id="add-line" type="button">Add Item</button>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Product</th><th class="num">Qty</th><th class="num">Rate</th><th class="num">Amount</th><th></th></tr></thead>
+                <tbody id="invoice-lines"></tbody>
+              </table>
+            </div>
+
+            <label class="notes-field">
+              <span>Notes</span>
+              <textarea id="invoice-notes" rows="3" placeholder="Packing, transport, bank or delivery notes"></textarea>
+            </label>
+          </section>
+
+          <aside class="panel invoice-summary">
+            <h2>Bill Summary</h2>
+            <dl>
+              <div><dt>Subtotal</dt><dd id="sum-subtotal">Rs 0.00</dd></div>
+              <div><dt>Tax</dt><dd id="sum-tax">Rs 0.00</dd></div>
+              <div class="total"><dt>Total</dt><dd id="sum-total">Rs 0.00</dd></div>
+            </dl>
+            <label>
+              <span>Amount received</span>
+              <input id="invoice-paid" type="number" min="0" step="0.01" value="0">
+            </label>
+            <div class="balance-row"><span>Balance due</span><strong id="sum-balance">Rs 0.00</strong></div>
+            <button class="primary-button full" type="submit">Save Invoice</button>
+            <button class="ghost-button full" id="clear-invoice" type="button">Clear Bill</button>
+          </aside>
+        </form>
+      </section>
+
+      <section class="view" id="invoices">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Invoice Register</h2>
+            <input class="search" id="invoice-search" type="search" placeholder="Search invoices">
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Invoice</th><th>Date</th><th>Customer</th><th class="num">Total</th><th class="num">Due</th><th>Status</th><th></th></tr></thead>
+              <tbody id="invoice-table"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" id="products">
+        <div class="two-column">
+          <section class="panel">
+            <div class="panel-head"><h2>Add Product</h2></div>
+            <form id="product-form" class="stack-form">
+              <label><span>Product name</span><input id="product-name" required placeholder="Tomato seed"></label>
+              <label><span>SKU / Code</span><input id="product-sku" placeholder="TS-001"></label>
+              <label><span>Unit</span><input id="product-unit" value="kg"></label>
+              <label><span>Selling rate</span><input id="product-rate" type="number" min="0" step="0.01" required></label>
+              <label><span>Opening stock</span><input id="product-stock" type="number" min="0" step="0.01" value="0"></label>
+              <label><span>Reorder level</span><input id="product-reorder" type="number" min="0" step="0.01" value="5"></label>
+              <button class="primary-button" type="submit">Save Product</button>
+            </form>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><h2>Stock Register</h2><input class="search" id="product-search" type="search" placeholder="Search stock"></div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Product</th><th>SKU</th><th class="num">Stock</th><th class="num">Rate</th><th class="num">Value</th><th></th></tr></thead>
+                <tbody id="product-table"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="customers">
+        <div class="two-column">
+          <section class="panel">
+            <div class="panel-head"><h2>Add Customer</h2></div>
+            <form id="customer-form" class="stack-form">
+              <label><span>Customer name</span><input id="customer-name" required placeholder="Buyer or company name"></label>
+              <label><span>Phone</span><input id="customer-phone" type="tel"></label>
+              <label><span>Email</span><input id="customer-email" type="email"></label>
+              <label><span>GSTIN / Tax ID</span><input id="customer-taxid"></label>
+              <label><span>Address</span><textarea id="customer-address" rows="3"></textarea></label>
+              <button class="primary-button" type="submit">Save Customer</button>
+            </form>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><h2>Customer List</h2><input class="search" id="customer-search" type="search" placeholder="Search customers"></div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>GSTIN</th><th></th></tr></thead>
+                <tbody id="customer-table"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="ledger">
+        <div class="dashboard-grid">
+          <section class="panel">
+            <div class="panel-head"><h2>Customer Balances</h2></div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Customer</th><th class="num">Sales</th><th class="num">Received</th><th class="num">Balance</th></tr></thead>
+                <tbody id="ledger-table"></tbody>
+              </table>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><h2>Record Payment</h2></div>
+            <form id="payment-form" class="stack-form">
+              <label><span>Invoice</span><select id="payment-invoice"></select></label>
+              <label><span>Payment date</span><input id="payment-date" type="date" required></label>
+              <label><span>Amount</span><input id="payment-amount" type="number" min="0.01" step="0.01" required></label>
+              <label><span>Mode</span><select id="payment-mode"><option>Cash</option><option>Bank Transfer</option><option>UPI</option><option>Cheque</option></select></label>
+              <button class="primary-button" type="submit">Save Payment</button>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="reports">
+        <div class="metric-grid report-grid">
+          <article class="metric"><span>Invoices</span><strong id="report-count">0</strong><small>Total invoices made</small></article>
+          <article class="metric"><span>Average bill</span><strong id="report-average">Rs 0.00</strong><small>Sales total divided by bills</small></article>
+          <article class="metric"><span>Received</span><strong id="report-received">Rs 0.00</strong><small>Cash collected</small></article>
+          <article class="metric"><span>Pending</span><strong id="report-pending">Rs 0.00</strong><small>Receivables</small></article>
+        </div>
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Sales by Product</h2>
+            <button class="ghost-button" id="export-csv" type="button">Export CSV</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Product</th><th class="num">Qty sold</th><th class="num">Sales value</th></tr></thead>
+              <tbody id="product-sales-table"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" id="settings">
+        <div class="dashboard-grid">
+          <section class="panel">
+            <div class="panel-head"><h2>Company Details</h2></div>
+            <form id="company-form" class="stack-form">
+              <label><span>Business name</span><input id="company-name"></label>
+              <label><span>Phone</span><input id="company-phone"></label>
+              <label><span>Email</span><input id="company-email" type="email"></label>
+              <label><span>Address</span><textarea id="company-address" rows="3"></textarea></label>
+              <button class="primary-button" type="submit">Save Details</button>
+            </form>
+          </section>
+          <section class="panel">
+            <div class="panel-head"><h2>Backup & Restore</h2></div>
+            <div class="backup-actions">
+              <button class="secondary-button" id="download-backup" type="button">Download Backup</button>
+              <label class="file-import">
+                <span>Restore Backup</span>
+                <input id="restore-backup" type="file" accept="application/json">
+              </label>
+              <button class="danger-button" id="clear-data" type="button">Clear All Data</button>
+            </div>
+            <p class="help-text">Data is saved on this computer in this browser. Download a backup regularly before changing browser, laptop, or Windows account.</p>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="invoice-dialog">
+    <div class="dialog-head">
+      <h2>Invoice Preview</h2>
+      <button class="icon-button" id="close-preview" type="button" aria-label="Close preview">x</button>
+    </div>
+    <div id="print-area"></div>
+    <div class="dialog-actions">
+      <button class="ghost-button" id="print-invoice" type="button">Print / Save PDF</button>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="erp.js"></script>
+</body>
+</html>

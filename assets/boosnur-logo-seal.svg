@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">Boosnur Genetics seal logo</title>
+  <desc id="desc">Premium circular Boosnur Genetics seal with seedling, field lines, and wordmark.</desc>
+  <rect width="640" height="640" fill="#fbfaf6"/>
+  <circle cx="320" cy="320" r="282" fill="#fbfaf6" stroke="#12372c" stroke-width="14"/>
+  <circle cx="320" cy="320" r="250" fill="none" stroke="#d8d0c2" stroke-width="2"/>
+  <path d="M169 392c88-40 194-51 316-33" fill="none" stroke="#12372c" stroke-width="14" stroke-linecap="round"/>
+  <path d="M188 449c78-29 167-38 266-25" fill="none" stroke="#c99743" stroke-width="12" stroke-linecap="round"/>
+  <path d="M320 381V185" fill="none" stroke="#12372c" stroke-width="15" stroke-linecap="round"/>
+  <path d="M312 269C224 265 183 221 177 145c89-4 138 35 135 124Z" fill="#c99743"/>
+  <path d="M328 321c88-4 129-48 135-124-89-4-138 35-135 124Z" fill="#174b38"/>
+  <path d="M218 179c36 45 68 71 97 80" fill="none" stroke="#f6d38e" stroke-width="9" stroke-linecap="round" opacity=".55"/>
+  <path d="M414 226c-34 41-64 66-91 75" fill="none" stroke="#8fb6a3" stroke-width="9" stroke-linecap="round" opacity=".5"/>
+  <text x="320" y="515" text-anchor="middle" fill="#12372c" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800" letter-spacing="2">BOOSNUR</text>
+  <text x="320" y="562" text-anchor="middle" fill="#12372c" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800" letter-spacing="6">GENETICS</text>
+  <text x="320" y="94" text-anchor="middle" fill="#c99743" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="5">GLOBAL SEED SOLUTIONS FROM INDIA</text>
+</svg>
