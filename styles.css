@@ -176,12 +176,9 @@ h2 { font-size: clamp(40px, 5vw, 66px); line-height: 1.08; letter-spacing: -.045
 .product-card span, .product-card h3, .product-card p { margin-left: 28px; margin-right: 28px; }
 .product-card h3 { margin-top: 18px; font-size: 24px; }
 .product-card p { color: #68746e; font-size: 14px; }
-.availability-panel { display: grid; grid-template-columns: .42fr .58fr; gap: 40px; align-items: start; margin-top: 52px; padding: 34px; background: #fffdf8; border: 1px solid var(--line); }
-.availability-panel h3 { font-size: 30px; }
-.availability-panel table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.availability-panel th { color: #8f6728; font-size: 10px; letter-spacing: .16em; text-align: left; text-transform: uppercase; }
-.availability-panel th, .availability-panel td { padding: 15px 12px; border-bottom: 1px solid var(--line); }
-.availability-panel td:first-child { font-weight: 800; color: var(--ink); }
+.capability-note { display: grid; grid-template-columns: .34fr .66fr; gap: 40px; align-items: start; margin-top: 52px; padding: 34px; background: #fffdf8; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.capability-note h3 { margin-bottom: 10px; font-size: 27px; }
+.capability-note p:last-child { max-width: 760px; color: var(--muted); line-height: 1.75; }
 
 .services { color: white; background: var(--green-deep); }
 .section-heading { display: grid; grid-template-columns: 1.4fr .6fr; gap: 80px; align-items: end; margin-bottom: 70px; }
@@ -335,7 +332,7 @@ footer { color: #a8b7b0; background: #0b261e; }
   .menu-toggle.active { color: white; }
   .menu-toggle.active span:first-child { transform: translateY(4px) rotate(45deg); }
   .menu-toggle.active span:last-child { transform: translateY(-4px) rotate(-45deg); }
-  .intro-grid, .identity-grid, .why-grid, .contact-intro, .approach-grid, .markets-grid, .availability-panel { grid-template-columns: 1fr; gap: 55px; }
+  .intro-grid, .identity-grid, .why-grid, .contact-intro, .approach-grid, .markets-grid, .capability-note { grid-template-columns: 1fr; gap: 55px; }
   .choice-grid { grid-template-columns: 1fr 1fr; }
   .product-grid, .compliance-grid, .principles-list { grid-template-columns: 1fr 1fr; }
   .market-cards { grid-template-columns: 1fr 1fr; }
@@ -390,8 +387,7 @@ footer { color: #a8b7b0; background: #0b261e; }
   .choice-grid, .product-grid, .compliance-grid, .principles-list, .market-cards { grid-template-columns: 1fr; }
   .choice-card, .product-card, .compliance-grid > div { min-height: 0; }
   .note-card { padding: 34px 24px; }
-  .availability-panel { padding: 24px 18px; }
-  .availability-panel th, .availability-panel td { padding: 13px 6px; }
+  .capability-note { padding: 24px 18px; gap: 18px; }
   .product-card h3 { margin-top: 34px; }
   .modal { padding: 14px; }
   .product-modal-copy { padding: 28px 20px; }
