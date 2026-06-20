@@ -63,21 +63,21 @@ const productDetails = {
     ]
   },
   custom: {
-    label: "Requirement-based crop planning",
-    title: "Buyer-Specified Crops",
+    label: "Broad, requirement-based seed production",
+    title: "Other Seed Crops",
     image: "assets/product-custom.png",
     alt: "Organized vegetable seed production field with crop rows",
     summary: {
       crop: "Buyer-Specified",
-      category: "Custom program",
+      category: "Vegetable, field, herb, or specialty crop",
       availability: "Feasibility review",
       moq: "Discuss by crop",
       export: "Available"
     },
-    text: "For buyer-specified crops, the program begins with requirement discussion. Crop feasibility, season, quantity, quality expectation, and destination market are reviewed before commitment.",
+    text: "Our production capability is not limited to tomato, chilli, or bell pepper. We welcome requirements for a broad range of vegetable, field, herb, and specialty seed crops. Each program begins with a technical and commercial review of the crop, variety, season, isolation, acreage, quantity, quality expectation, and destination market.",
     points: [
-      "Production Uniformity: useful for OP or hybrid vegetable seed production possibilities.",
-      "Field Monitoring Support: planning can include crop selection, farmer network, isolation needs, and timeline.",
+      "Flexible Programs: OP, hybrid, multiplication, and buyer-specified production possibilities can be discussed.",
+      "Feasibility-Led Planning: crop selection, growing window, farmer network, isolation needs, acreage, and timeline are reviewed before acceptance.",
       "Export Documentation Available: the goal is a clear trial or contract program from planning to dispatch."
     ]
   }
