@@ -190,12 +190,6 @@ h2 { font-size: clamp(40px, 5vw, 66px); line-height: 1.08; letter-spacing: -.045
 .service-icon { color: var(--gold); font-size: 12px; letter-spacing: .15em; }
 .service-card h3 { font-size: 23px; }
 .service-card p { max-width: 390px; color: #aebcb5; font-size: 14px; }
-.trust-strip { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 60px; border: 1px solid rgba(255,255,255,.16); }
-.trust-strip div { min-height: 105px; display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: center; padding: 24px; }
-.trust-strip div + div { border-left: 1px solid rgba(255,255,255,.16); }
-.trust-strip span { color: var(--gold); font-size: 10px; }
-.trust-strip strong { font: 600 13px/1.55 var(--display); color: #dbe3df; }
-
 .approach { color: white; background: #173b30; }
 .approach h2 em { color: #e0b467; font-family: Georgia, serif; font-weight: 400; }
 .approach-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 95px; align-items: start; }
@@ -309,7 +303,7 @@ footer { color: #a8b7b0; background: #0b261e; }
 .product-modal-copy h3 { margin-top: 12px; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05; }
 .product-rating { margin-top: 10px; color: #8f6728; font-size: 13px; font-weight: 700; }
 .product-modal-copy p { color: #5a6861; margin-bottom: 18px; }
-.crop-summary { display: grid; grid-template-columns: repeat(5, 1fr); margin: 18px 0 22px; border: 1px solid var(--line); background: #fffdf8; }
+.crop-summary { display: grid; grid-template-columns: repeat(4, 1fr); margin: 18px 0 22px; border: 1px solid var(--line); background: #fffdf8; }
 .crop-summary div { padding: 13px 12px; border-right: 1px solid var(--line); }
 .crop-summary div:last-child { border-right: 0; }
 .crop-summary dt { color: #8f6728; font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
@@ -346,8 +340,6 @@ footer { color: #a8b7b0; background: #0b261e; }
   .identity-visual > img { height: 520px; }
   .field-story-heading { grid-template-columns: 1fr; gap: 25px; }
   .photo-grid { grid-template-columns: 1fr; }
-  .trust-strip { grid-template-columns: 1fr; }
-  .trust-strip div + div { border-left: 0; border-top: 1px solid rgba(255,255,255,.16); }
   .enquiry-panel { grid-template-columns: 1fr; gap: 40px; padding: 40px; }
   .section-heading { grid-template-columns: 1fr; gap: 24px; }
   .why-grid { gap: 30px; }

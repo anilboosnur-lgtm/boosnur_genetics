@@ -14,12 +14,11 @@ const productDetails = {
       crop: "Tomato",
       category: "Hybrid / OP by requirement",
       availability: "On request",
-      moq: "Discuss by program",
-      export: "Available"
+      basis: "Based on requirement"
     },
     text: "Tomato seed programs require careful crop planning, healthy plant growth, flowering-stage observation, and attention to fruit maturity before seed extraction and handling.",
     points: [
-      "Production Uniformity: planned according to variety, acreage, quantity, and growing window.",
+      "Production Planning: reviewed according to variety, acreage, quantity, and growing window.",
       "Field Monitoring Support: crop health, flowering, fruit setting, and production uniformity are followed.",
       "Export Documentation Available: buyer requirements can include quality checks, packing, and shipment coordination."
     ]
@@ -33,12 +32,11 @@ const productDetails = {
       crop: "Chilli / Hot Pepper",
       category: "Hybrid / OP by requirement",
       availability: "On request",
-      moq: "Discuss by program",
-      export: "Available"
+      basis: "Based on requirement"
     },
     text: "Chilli and hot pepper seed production depends on suitable field selection, crop-stage monitoring, plant health, fruit maturity, and careful post-harvest handling.",
     points: [
-      "Production Uniformity: programs can be planned for chilli, hot pepper, or buyer-specified pepper requirements.",
+      "Production Planning: programs can be discussed for chilli, hot pepper, or related pepper requirements.",
       "Field Monitoring Support: cultivation planning considers season, isolation, crop care, and timeline.",
       "Export Documentation Available: seed preparation can be aligned with quality, packing, and shipment expectations."
     ]
@@ -52,31 +50,29 @@ const productDetails = {
       crop: "Bell Pepper / Capsicum",
       category: "Hybrid / OP by requirement",
       availability: "On request",
-      moq: "Discuss by program",
-      export: "Available"
+      basis: "Based on requirement"
     },
     text: "Bell pepper seed programs need close attention to plant vigor, flowering, fruit development, crop protection, and harvest timing for dependable seed output.",
     points: [
-      "Production Uniformity: suitable for capsicum and sweet pepper requirements after feasibility review.",
+      "Production Planning: suitable for capsicum and sweet pepper requirements after feasibility review.",
       "Field Monitoring Support: discussions can cover protected cultivation, field planning, and quality expectations.",
       "Export Documentation Available: crop updates, seed handling, and export preparation can be coordinated."
     ]
   },
   custom: {
     label: "Broad, requirement-based seed production",
-    title: "Other Seed Crops",
+    title: "Custom Seed Programs",
     image: "assets/product-custom.png",
     alt: "Organized vegetable seed production field with crop rows",
     summary: {
-      crop: "Buyer-Specified",
+      crop: "Custom Requirement",
       category: "Vegetable, field, herb, or specialty crop",
       availability: "Feasibility review",
-      moq: "Discuss by crop",
-      export: "Available"
+      basis: "Based on requirement"
     },
     text: "Our production capability is not limited to tomato, chilli, or bell pepper. We welcome requirements for a broad range of vegetable, field, herb, and specialty seed crops. Each program begins with a technical and commercial review of the crop, variety, season, isolation, acreage, quantity, quality expectation, and destination market.",
     points: [
-      "Flexible Programs: OP, hybrid, multiplication, and buyer-specified production possibilities can be discussed.",
+      "Flexible Programs: OP, hybrid, multiplication, and custom production possibilities can be discussed.",
       "Feasibility-Led Planning: crop selection, growing window, farmer network, isolation needs, acreage, and timeline are reviewed before acceptance.",
       "Export Documentation Available: the goal is a clear trial or contract program from planning to dispatch."
     ]
@@ -139,8 +135,7 @@ document.querySelectorAll("[data-product]").forEach((card) => {
     productModal.querySelector("#product-summary-crop").textContent = detail.summary.crop;
     productModal.querySelector("#product-summary-category").textContent = detail.summary.category;
     productModal.querySelector("#product-summary-availability").textContent = detail.summary.availability;
-    productModal.querySelector("#product-summary-moq").textContent = detail.summary.moq;
-    productModal.querySelector("#product-summary-export").textContent = detail.summary.export;
+    productModal.querySelector("#product-summary-basis").textContent = detail.summary.basis;
 
     const image = productModal.querySelector("#product-modal-image");
     image.src = detail.image;
@@ -188,7 +183,6 @@ function buildWhatsAppMessage(formData) {
     `Phone / WhatsApp: ${getFormValue(formData, "phone")}`,
     `Email: ${getFormValue(formData, "email")}`,
     `Seed requirement: ${getFormValue(formData, "requirement")}`,
-    `Quantity required: ${getFormValue(formData, "quantity")}`,
     `Message: ${getFormValue(formData, "message")}`,
     "",
     "Source: Boosnur Genetics website",
