@@ -165,7 +165,10 @@ const revealObserver = new IntersectionObserver(
   { threshold: 0.15 }
 );
 
-document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+document.querySelectorAll(".reveal").forEach((element, index) => {
+  element.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 70}ms`);
+  revealObserver.observe(element);
+});
 document.getElementById("year").textContent = new Date().getFullYear();
 
 function getFormValue(formData, key) {
