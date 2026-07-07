@@ -157,6 +157,34 @@ h2 { font-size: clamp(40px, 5vw, 66px); line-height: 1.08; letter-spacing: -.045
 .crop-trail-links button:hover { transform: translateY(-3px); border-color: rgba(201,151,67,.65); background: #f1e5cc; box-shadow: 0 12px 28px rgba(23,46,36,.09); }
 .crop-trail-links button:hover::after { transform: scaleX(1); }
 
+.scan-flow {
+  padding: 78px 0;
+  color: white;
+  background: var(--green-deep);
+}
+.scan-flow-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 70px; align-items: center; }
+.scan-flow .eyebrow { color: #d8dfda; }
+.scan-flow h2 { font-size: clamp(34px, 4.6vw, 58px); }
+.scan-flow-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.18);
+}
+.scan-flow-steps > div {
+  min-height: 215px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,.045);
+  transition: background .25s ease, transform .25s ease;
+}
+.scan-flow-steps > div:hover { transform: translateY(-4px); background: rgba(255,255,255,.075); }
+.scan-flow-steps span { color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: .16em; }
+.scan-flow-steps strong { margin-top: 28px; font: 800 18px/1.22 var(--display); }
+.scan-flow-steps p { margin: auto 0 0; color: #b7c5be; font-size: 13px; line-height: 1.55; }
+
 .choice { background: var(--paper); }
 .choice-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .choice-card { min-height: 270px; padding: 30px 24px; background: #fffdf8; transition: transform .28s ease, background .28s ease, box-shadow .28s ease; }
@@ -170,6 +198,19 @@ h2 { font-size: clamp(40px, 5vw, 66px); line-height: 1.08; letter-spacing: -.045
 .intro-copy p { color: #56635d; }
 .lead { color: var(--ink) !important; font-size: 21px; line-height: 1.6; }
 .intro-copy .text-link { margin-top: 20px; }
+.quick-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 28px 0 8px;
+}
+.quick-points span {
+  padding: 10px 13px;
+  color: var(--green);
+  background: #efe4ce;
+  border: 1px solid rgba(201,151,67,.25);
+  font: 800 12px/1.25 var(--display);
+}
 
 .founder-note { padding: 0 0 100px; background: var(--paper); }
 .note-card { padding: 54px 64px; color: white; background: var(--green); }
@@ -247,6 +288,9 @@ h2 { font-size: clamp(40px, 5vw, 66px); line-height: 1.08; letter-spacing: -.045
 .route-card span { color: var(--gold); font-size: 10px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
 .route-card h3 { margin-top: 36px; font-size: 28px; line-height: 1.12; }
 .route-card p { margin: 26px 0 0; color: #66736d; font-size: 14px; line-height: 1.7; }
+.route-card ul { margin: 24px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.route-card li { padding: 11px 0 11px 22px; border-bottom: 1px solid var(--line); color: #4f5f56; font-size: 13px; position: relative; }
+.route-card li::before { content: ""; position: absolute; left: 0; top: 19px; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
 
 .services { color: white; background: var(--green-deep); }
 .section-heading { display: grid; grid-template-columns: 1.4fr .6fr; gap: 80px; align-items: end; margin-bottom: 70px; }
@@ -424,9 +468,9 @@ footer { color: #a8b7b0; background: #0b261e; }
   .menu-toggle.active { color: white; }
   .menu-toggle.active span:first-child { transform: translateY(4px) rotate(45deg); }
   .menu-toggle.active span:last-child { transform: translateY(-4px) rotate(-45deg); }
-  .intro-grid, .identity-grid, .why-grid, .contact-intro, .approach-grid, .markets-grid, .capability-note, .crop-trail-wrap { grid-template-columns: 1fr; gap: 55px; }
+  .intro-grid, .identity-grid, .why-grid, .contact-intro, .approach-grid, .markets-grid, .capability-note, .crop-trail-wrap, .scan-flow-grid { grid-template-columns: 1fr; gap: 55px; }
   .choice-grid { grid-template-columns: 1fr 1fr; }
-  .product-grid, .compliance-grid, .principles-list, .route-grid { grid-template-columns: 1fr 1fr; }
+  .product-grid, .compliance-grid, .principles-list, .route-grid, .scan-flow-steps { grid-template-columns: 1fr 1fr; }
   .market-cards { grid-template-columns: 1fr 1fr; }
   .crop-trail-links { grid-template-columns: repeat(2, 1fr); }
   .product-dialog { grid-template-columns: 1fr; }
@@ -475,7 +519,9 @@ footer { color: #a8b7b0; background: #0b261e; }
   .form-action { align-items: stretch; flex-direction: column; }
   .button-submit { justify-content: space-between; }
   .values > div { grid-template-columns: 36px 105px 1fr; }
-  .choice-grid, .product-grid, .compliance-grid, .principles-list, .market-cards, .route-grid, .crop-trail-links { grid-template-columns: 1fr; }
+  .choice-grid, .product-grid, .compliance-grid, .principles-list, .market-cards, .route-grid, .crop-trail-links, .scan-flow-steps { grid-template-columns: 1fr; }
+  .scan-flow { padding: 62px 0; }
+  .scan-flow-steps > div { min-height: 0; }
   .choice-card, .product-card, .compliance-grid > div, .route-card { min-height: 0; }
   .crop-trail { padding: 65px 0; }
   .crop-trail-panel { padding: 22px; }
